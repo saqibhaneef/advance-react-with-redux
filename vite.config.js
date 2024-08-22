@@ -6,5 +6,6 @@ export default defineConfig({
   plugins: [react()],
   test: {
     environment: 'jsdom', // Ensure jsdom is set as the environment
+    reporters: ['html']
   },
 })
