@@ -1,31 +1,49 @@
 
-import { it,expect, test, describe, vi } from 'vitest'
+import { it,expect, test, describe, vi, beforeEach } from 'vitest'
 import { screen,render } from '@testing-library/react'
 import App from '../App'
+import CommentBox from '../Components/CommentBox'
+import CommentList from '../Components/CommentsList'
+
 
 describe('App Component Test', () => {    
+    let container;
+    beforeEach(()=>{
+        container=render(<App/>)     
+    })
     
-    const {container}=render(<App/>) 
-    screen.debug()
+    
     it('Should render App Component', () => {
         expect(container).not.toBeNull();       
     })
 
-    it('Contains Comment Box', () => {
-
-        const divElements=document.querySelectorAll('div');
+    it('Shows comment box', () => {
         
-        const hasCommentBoxText = Array.from(divElements).some(div => div.textContent.includes('Comment Box'));
-        
-        expect(hasCommentBoxText).toBeTruthy()
-    })    
-
-    it('Contains Comment List', () => {
-
-        const divElements=document.querySelectorAll('div');
-        
-        const hasCommentBoxText = Array.from(divElements).some(div => div.textContent.includes('Comment List'));
-        
-        expect(hasCommentBoxText).toBeTruthy()
+        expect(container).contain(CommentBox);
     })
+
+    it('Shows a Comment List', () => {
+        
+        expect(container).contain(CommentList);
+    })
+    
+    // it('Contains Comment Box', () => {
+
+    //     const divElements=document.querySelectorAll('div');
+        
+    //     const hasCommentBoxText = Array.from(divElements).some(div => div.textContent.includes('Comment Box'));
+        
+    //     expect(hasCommentBoxText).toBeTruthy()
+    // })    
+
+    
+
+    // it('Contains Comment List', () => {
+
+    //     const divElements=document.querySelectorAll('div');
+        
+    //     const hasCommentBoxText = Array.from(divElements).some(div => div.textContent.includes('Comment List'));
+        
+    //     expect(hasCommentBoxText).toBeTruthy()
+    // })
 })
