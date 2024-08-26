@@ -6,8 +6,9 @@ import CommentBox from '../Components/CommentBox'
 import CommentList from '../Components/CommentsList'
 
 
-describe('App Component Test', () => {    
+describe('<App/>', () => {    
     let container;
+    
     beforeEach(()=>{
         container=render(<App/>)     
     })
